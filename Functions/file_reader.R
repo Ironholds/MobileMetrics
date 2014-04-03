@@ -1,35 +1,35 @@
 #Reads sample log files
 file_reader <- function(file){
-
-  #Open connection
-  con <- gzfile(file, open = "r")
+  
+  #Move file into the current directory and unzip
+  system(paste("cp ",file,file.path(getwd(),"dailydata.tsv.gz")))
+  system("gunzip dailydata.tsv.gz")
+  
+  #Awk the hell out of it
+  system("awk -f awkstrings dailydata.tsv")
   
   #Read it in
-  suppressWarnings({
-    
-    data.df <- read.delim(file = con, sep = "\t", header = FALSE, 
-                          as.is = TRUE, quote = "",
-                          col.names = c("squid","sequence_no",
-                                        "timestamp", "servicetime",
-                                        "IP", "status_code",
-                                        "reply_size", "request_method",
-                                        "URL", "squid_status",
-                                        "MIME", "referer",
-                                        "x_forwarded", "UA",
-                                        "lang", "x_analytics"),
-                          colClasses = c("character","numeric",
-                                         "character","numeric",
-                                         "character","character",
-                                         "numeric","character",
-                                         "character","character",
-                                         "character","character",
-                                         "character","character",
-                                         "character","character"))
-    
-  })
+  data.df <- read.delim(file = "dailydata.tsv", sep = "\t", header = FALSE, 
+                        as.is = TRUE, quote = "\"",
+                        col.names = c("squid","sequence_no",
+                                      "timestamp", "servicetime",
+                                      "IP", "status_code",
+                                      "reply_size", "request_method",
+                                      "URL", "squid_status",
+                                      "MIME", "referer",
+                                      "x_forwarded", "UA",
+                                      "lang", "x_analytics"),
+                        colClasses = c("character","character",
+                                       "character","character",
+                                       "character","character",
+                                       "character","character",
+                                       "character","character",
+                                       "character","character",
+                                       "character","character",
+                                       "character","character"))
   
-  #Close connection
-  close(con)
+  #Remove the original file
+  file.remove("dailydata.tsv")
   
   #Return
   return(data.df)
