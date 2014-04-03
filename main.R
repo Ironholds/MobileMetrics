@@ -1,7 +1,7 @@
 mobilemetrics <- function(){
   
   #List files
-  filelist <- list.files(path = "/a/squid/archive/sampled/",
+  filelist <- list.files(path = "/a/squid/archive/sampled",
                          pattern = ".gz",
                          full.names = TRUE)
   
