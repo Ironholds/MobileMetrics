@@ -2,7 +2,7 @@ mobilemetrics <- function(){
   
   #List files
   filelist <- list.files(path = "/a/squid/archive/sampled",
-                         pattern = ".gz",
+                         pattern = ".gz$",
                          full.names = TRUE)
   
   #Limit to the most recent one
