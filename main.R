@@ -1,5 +1,9 @@
 mobilemetrics <- function(){
   
+  #Load in config files, functions
+  to_dispose <- lapply(list.files(file.path(getwd(),"Functions"), full.names = TRUE),source)
+  source("config.R")
+  
   #List files
   filelist <- list.files(path = "/a/squid/archive/sampled",
                          pattern = ".gz$",
