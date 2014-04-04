@@ -1,1 +1,1 @@
-{ gsub("\\*", ""); print >> "dailydata.tsv"}
+{ gsub("\\*", ""); print >> "processeddata.tsv"}
