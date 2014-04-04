@@ -9,8 +9,8 @@ file_reader <- function(file){
   system("awk -f awkstrings dailydata.tsv")
   
   #Read it in
-  data.df <- read.delim(file = "dailydata.tsv", sep = "\t", header = FALSE, 
-                        as.is = TRUE, quote = "\"",
+  data.df <- read.delim(file = "processeddata.tsv", sep = "\t", header = FALSE, 
+                        as.is = TRUE, quote = "",
                         col.names = c("squid","sequence_no",
                                       "timestamp", "servicetime",
                                       "IP", "status_code",
@@ -28,8 +28,8 @@ file_reader <- function(file){
                                        "character","character",
                                        "character","character"))
   
-  #Remove the original file
-  file.remove("dailydata.tsv")
+  #Remove the original files
+  file.remove(c("dailydata.tsv","processeddata.tsv")
   
   #Return
   return(data.df)
