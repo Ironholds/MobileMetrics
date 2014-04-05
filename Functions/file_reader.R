@@ -29,7 +29,7 @@ file_reader <- function(file){
                                        "character","character"))
   
   #Remove the original files
-  file.remove(c("dailydata.tsv","processeddata.tsv")
+  file.remove(c("dailydata.tsv","processeddata.tsv"))
   
   #Return
   return(data.df)
