@@ -1,1 +1,1 @@
-{ gsub("\\t", " "); gsub("\\n", " "); gsub("\\*", ""); gsub("\"", ""); print >> "./Data/processeddata.tsv"}
+gsub("\\n", " "); gsub("\"", ""); print >> "./Data/processeddata.tsv"}
