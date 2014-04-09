@@ -2,7 +2,7 @@
 loss_logger <- function(x){
   
   #Construct vector to save
-  loss_log <- character(10)
+  loss_log <- character(5)
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
                        "Production requests",
@@ -77,16 +77,11 @@ loss_logger <- function(x){
   #Log non-pageview loss
   loss_log[4] <- nrow(x)
   
-  #Remove 404s et al
+  #Filter to completed, non-redirected requests
+  x <- x[grepl(x = x$status_code, pattern = "200"),]
   
   #Log those
-  
-  #Exclude non-completed requests
-  x <- x[grepl()]
-  
-  
-  #Exclude bots and crawlers - just look for bot?
-  #Write out the metadata
+  loss_log[5] <- nrow(x)
   
   #Return
   return(x)
