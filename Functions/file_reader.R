@@ -2,14 +2,14 @@
 file_reader <- function(file){
   
   #Move file into the current directory and unzip
-  system(paste("cp ",file,file.path(getwd(),"dailydata.tsv.gz")))
-  system("gunzip dailydata.tsv.gz")
+  system(paste("cp ",file,file.path(getwd(),"Data","dailydata.tsv.gz")))
+  system("gunzip ./Data/dailydata.tsv.gz")
   
   #Awk the hell out of it
-  system("awk -f awkstrings dailydata.tsv")
+  system("awk -f awkstrings ./Data/dailydata.tsv")
   
   #Read it in
-  data.df <- read.delim(file = "processeddata.tsv", sep = "\t", header = FALSE, 
+  data.df <- read.delim(file = "./Data/processeddata.tsv", sep = "\t", header = FALSE, 
                         as.is = TRUE, quote = "",
                         col.names = c("squid","sequence_no",
                                       "timestamp", "servicetime",
@@ -29,7 +29,7 @@ file_reader <- function(file){
                                        "character","character"))
   
   #Remove the original files
-  file.remove(c("dailydata.tsv","processeddata.tsv"))
+  file.remove(c("./Data/dailydata.tsv","./Data/processeddata.tsv"))
   
   #Return
   return(data.df)

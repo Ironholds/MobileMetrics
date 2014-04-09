@@ -21,7 +21,13 @@ mobilemetrics <- function(){
   dailydata <- file_reader(file = curfile)
   
   #Filter it, logging the filter results
-  filtereddata <- loss_logger(x = dailydata)
+  dailydata <- loss_logger(x = dailydata)
+  
+  #Run it through the tagger
+  taggeddata <- tagger(x = dailydata)
+  
+  #Transmogriphy the results
+  transmogriphy(x = taggeddata)
 }
 
 Apps
