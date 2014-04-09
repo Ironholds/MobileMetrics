@@ -6,7 +6,7 @@ loss_logger <- function(x){
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
                        "Production requests",
-                       "Project requests"
+                       "Project requests",
                        "Completed requests")
   
   #Log initial rows
@@ -29,10 +29,10 @@ loss_logger <- function(x){
   loss_log[2] <- nrow(x)
   
   #Remove non-project hits
-  x <- x[grepl(pattern = "((commons|meta|species)\\.wikimedia|(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia))\\.org)",
+  x <- x[grepl(pattern = "((commons|meta|species)\\.(m\\.)?wikimedia|(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))\\.org)",
                x = x$URL,
                ignore.case = TRUE),]
-  
+
   #Log non-project loss
   loss_log[3] <- nrow(x)
   
@@ -40,57 +40,52 @@ loss_logger <- function(x){
   x <- x[x$MIME %in% c("text/html; charset=UTF-8",
                        "text/html; charset=utf-8",
                        "text/html; charset=iso-8859-1",
+                       "text/html; charset=ISO-8859-1",
                        "text/html",
                        "application/vnd.php.serialized; charset=utf-8",
+                       "application/vnd.php.serialized; charset=UTF-8",
+                       "application/vnd.php.serialized; charset=iso-8859-1",
+                       "application/vnd.php.serialized; charset=ISO-8859-1",
+                       "application/vnd.php.serialized",
                        "application/json; charset=utf-8",
+                       "application/json; charset=UTF-8",
+                       "application/json; charset=iso-8859-1",
+                       "application/json; charset=ISO-8859-1",
                        "application/json",
-                       "text/xml; charset=utf-8"
+                       "text/xml; charset=utf-8",
+                       "text/xml; charset=UTF-8",
+                       "text/xml; charset=iso-8859-1",
+                       "text/xml; charset=ISO-8859-1",
+                       "text/xml",
+                       "application/x-www-form-urlencoded; charset=UTF-8",
+                       "application/x-www-form-urlencoded; charset=utf-8",
+                       "application/x-www-form-urlencoded; charset=iso-8859-1",
+                       "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                       "application/x-www-form-urlencoded",
+                       "application/xml; charset=UTF-8",
+                       "application/xml; charset=utf-8",
+                       "application/xml; charset=iso-8859-1",
+                       "application/xml; charset=ISO-8859-1",
+                       "application/xml",
+                       "application/yaml; charset=utf-8",
+                       "application/yaml; charset=UTF-8",
+                       "application/yaml; charset=iso-8859-1",
+                       "application/yaml; charset=ISO-8859-1",
+                       "application/yaml"
                        ),]
   
   #Log non-pageview loss
   loss_log[4] <- nrow(x)
   
-              
-                           
-  [15] "text/xml; charset=utf-8"                         
-  [16] "application/opensearchdescription+xml"           
-  [17] "application/x-www-form-urlencoded"               
-  [18] "application/xml; charset=UTF-8"                  
-  [19] "application/ogg"                                 
-  [20] "image/svg+xml"                                   
-  [21] "text/html; charset=iso-8859-1"                   
-  [22] "text/x-wiki; charset=UTF-8"                      
-  [23] "application/xml; charset=utf-8"                  
-  [24] "text/x-component"                                
-  [25] "text/html"                                       
-  [26] ""                                                
-  [27] "image/tiff"                                      
-  [28] "application/pdf"                                 
-  [29] "audio/webm"                                      
-  [30] "application/rsd+xml; charset=utf-8"              
-  [31] "text/plain; charset=utf-8"                       
-  [32] "audio/midi"                                      
-  [33] "text/plain"                                      
-  [34] "text/plain; charset=UTF-8"                       
-  [35] "text/text; charset=utf-8"                        
-  [36] "application/x-wiki"                              
-  [37] "application/x-www-form-urlencoded; charset=utf-8"
-  [38] "video/webm"                                      
-  [39] "application/x-www-form-urlencoded; charset=UTF-8"
-  [40] "application/yaml; charset=utf-8"                 
-  [41] "application/xml"                                 
-  [42] "image/vnd.djvu"                                  
-  [43] "audio/x-flac"                                    
-  [44] "audio/x-wav"                                     
-  [45] "application/x-www-form-urlencoded;charset=utf-8" 
-  [46] "; charset=\\x22utf-8\\x22"                       
-  [47] "unknown/unknown"                                 
-  [48] "html"                                            
-  [49] "application/octet-stream"                        
+  #Remove 404s et al
+  
+  #Log those
   
   #Exclude non-completed requests
   x <- x[grepl()]
   
+  
+  #Exclude bots and crawlers - just look for bot?
   #Write out the metadata
   
   #Return
