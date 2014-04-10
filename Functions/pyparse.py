@@ -30,7 +30,7 @@ def parse_ua(x):
 
 #Import object
 json_data = open('user_agent_input.json')
-data = json.load(json_data)
+data = json.load(json_data, strict = False)
 json_data.close()
 
 #Parse it and convert it back

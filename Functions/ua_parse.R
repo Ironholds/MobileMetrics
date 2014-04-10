@@ -1,13 +1,10 @@
 ua_parse <- function(uas, data = c("device","os","browser","browser_version")){
-  
-  #Strip unwanted characters
-  uas <- gsub(x = uas, pattern = "(\x1f)", replacement = "")
-  
+    
   #Convert UAs into a JSON object and write out
-  cat(toJSON(x = uas, .escapeEscapes = FALSE), file = "user_agent_input.json")
+  cat(toJSON(x = uas), file = "user_agent_input.json")
   
   #Call the Python script over them.
-  system("python pyparse.py")
+  system("python ./Functions/pyparse.py")
   
   #Read the results in
   returned_UAs <- fromJSON("user_agent_output.json")
