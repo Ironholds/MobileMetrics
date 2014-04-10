@@ -1,7 +1,7 @@
-ua_parse <- function(uas, data = c("device","os","browser","browser_version")){
-    
+ua_parse <- function(x, data = c("device","os","browser","browser_version")){
+  
   #Convert UAs into a JSON object and write out
-  cat(toJSON(x = uas), file = "user_agent_input.json")
+  cat(toJSON(x = x$UA), file = "user_agent_input.json")
   
   #Call the Python script over them.
   system("python ./Functions/pyparse.py")
@@ -35,6 +35,9 @@ ua_parse <- function(uas, data = c("device","os","browser","browser_version")){
   #Kill now-unwanted data files
   file.remove("user_agent_input.json","user_agent_output.json")
   
+  #Bind into x
+  x <- cbind(x,UAs.df)
+  
   #Return
-  return(UAs.df)
+  return(x)
 }
