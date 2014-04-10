@@ -37,42 +37,7 @@ loss_logger <- function(x){
   loss_log[3] <- nrow(x)
   
   #Remove non-text/html,application hits
-  x <- x[x$MIME %in% c("text/html; charset=UTF-8",
-                       "text/html; charset=utf-8",
-                       "text/html; charset=iso-8859-1",
-                       "text/html; charset=ISO-8859-1",
-                       "text/html",
-                       "application/vnd.php.serialized; charset=utf-8",
-                       "application/vnd.php.serialized; charset=UTF-8",
-                       "application/vnd.php.serialized; charset=iso-8859-1",
-                       "application/vnd.php.serialized; charset=ISO-8859-1",
-                       "application/vnd.php.serialized",
-                       "application/json; charset=utf-8",
-                       "application/json; charset=UTF-8",
-                       "application/json; charset=iso-8859-1",
-                       "application/json; charset=ISO-8859-1",
-                       "application/json",
-                       "text/xml; charset=utf-8",
-                       "text/xml; charset=UTF-8",
-                       "text/xml; charset=iso-8859-1",
-                       "text/xml; charset=ISO-8859-1",
-                       "text/xml",
-                       "application/x-www-form-urlencoded; charset=UTF-8",
-                       "application/x-www-form-urlencoded; charset=utf-8",
-                       "application/x-www-form-urlencoded; charset=iso-8859-1",
-                       "application/x-www-form-urlencoded; charset=ISO-8859-1",
-                       "application/x-www-form-urlencoded",
-                       "application/xml; charset=UTF-8",
-                       "application/xml; charset=utf-8",
-                       "application/xml; charset=iso-8859-1",
-                       "application/xml; charset=ISO-8859-1",
-                       "application/xml",
-                       "application/yaml; charset=utf-8",
-                       "application/yaml; charset=UTF-8",
-                       "application/yaml; charset=iso-8859-1",
-                       "application/yaml; charset=ISO-8859-1",
-                       "application/yaml"
-                       ),]
+  x <- x[x$MIME %in% accepted_MIMES,]
   
   #Log non-pageview loss
   loss_log[4] <- nrow(x)
