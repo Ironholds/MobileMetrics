@@ -2,7 +2,7 @@
 file_reader <- function(file){
   
   #Move file into the current directory and unzip
-  file.copy(from = file, to = file.path(getwd(),"Data","dailydata.tsv.gz"))
+  file.copy(from = file, to = file.path(getwd(),"Data","dailydata.tsv.gz"), overwrite = TRUE)
   system("gunzip ./Data/dailydata.tsv.gz")
   
   #Awk the hell out of it
