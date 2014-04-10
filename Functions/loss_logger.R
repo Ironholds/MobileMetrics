@@ -83,6 +83,12 @@ loss_logger <- function(x){
   #Log those
   loss_log[5] <- nrow(x)
   
-  #Return
+  #Write out
+  write.table(x = loss_log,
+              file = file.path(getwd(),"Logs",paste(curdate,"metadata.tsv", sep = "_")),
+              quote = TRUE,
+              sep = "\t")
+  
+  #Return the (now sanitised) original object
   return(x)
 }
