@@ -35,7 +35,7 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
                     "application/yaml")
 
 #Internal sources of requests
-internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API")
+internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API)")
 
 #Bots
 bot_browsers <- c()
