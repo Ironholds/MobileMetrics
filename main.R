@@ -10,8 +10,8 @@ mobilemetrics <- function(){
     
     #Store the date
     assign("curdate", value = substring(text = curfile,
-                         first = 48,
-                         last = 55),
+                         first = 47,
+                         last = 54),
            envir = globalenv())
     
     #Read in the latest file
