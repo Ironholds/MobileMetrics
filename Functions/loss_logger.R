@@ -60,7 +60,7 @@ loss_logger <- function(x){
   loss_log[6] <- nrow(x)
   
   #Filter out non-content requests
-  x <- x[!grepl(x = x$URL, pattern = content_sources),]
+  x <- x[grepl(x = x$URL, pattern = content_sources),]
   
   #Log
   loss_log[7] <- nrow(x)
