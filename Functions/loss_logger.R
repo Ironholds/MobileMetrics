@@ -30,7 +30,7 @@ loss_logger <- function(x){
   loss_log[2] <- nrow(x)
   
   #Remove non-project hits
-  x <- x[grepl(pattern = "(((commons|meta|species)\\.wikimedia)|wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))",
+  y <- x[!grepl(pattern = "(((commons|meta|species)\\.(m\\.)?wikimedia)|wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))",
                x = x$URL,
                ignore.case = TRUE),]
     
