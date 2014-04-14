@@ -9,10 +9,7 @@ mobilemetrics <- function(){
   rl_parse <- function(curfile, desired_columns = c("timestamp","x_forwarded","UA","device","os","browser","browser_version")){
     
     #Store the date
-    assign("curdate", value = substring(text = curfile,
-                         first = 47,
-                         last = 54),
-           envir = globalenv())
+    curdate <<- substring(text = curfile, first = 47, last = 54)
     
     #Read in the latest file
     dailydata <- file_reader(file = curfile)
