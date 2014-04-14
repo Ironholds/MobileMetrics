@@ -48,6 +48,10 @@ loss_logger <- function(x){
   #Log those
   loss_log[5] <- nrow(x)
   
+  #Format timestamps
+  x$timestamp <- x$timestamp <- strptime(substring(x$timestamp,1,13), format = "%Y-%m-%dT%H")
+  
+  
   #Write out
   write.table(x = loss_log,
               file = file.path(getwd(),"Logs",paste(curdate,"metadata.tsv", sep = "_")),
