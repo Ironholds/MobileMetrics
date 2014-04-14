@@ -37,6 +37,9 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
 #Internal sources of requests
 internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API)")
 
+#Content sources
+content_sources <- c("(/w/|/wiki/|/zh/|/zh-tw/|/zh-cn/|/zh-hant/|/zh-mo/|/zh-hans/|/zh-hk/|/sr/|/zh-sg/|/sr-hl/|/sr-el/)")
+
 #Bots
 bot_browsers <- c()
 

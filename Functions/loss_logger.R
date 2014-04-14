@@ -2,13 +2,14 @@
 loss_logger <- function(x){
   
   #Construct vector to save
-  loss_log <- character(6)
+  loss_log <- character(7)
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
                        "Production requests",
                        "Project requests",
                        "Completed requests",
-                       "External requests")
+                       "External requests",
+                       "Content requests")
   
   #Log initial rows
   loss_log[1] <- nrow(x)
@@ -57,6 +58,12 @@ loss_logger <- function(x){
   
   #Log
   loss_log[6] <- nrow(x)
+  
+  #Filter out non-content requests
+  x <- x[!grepl(x = x$URL, pattern = content_sources),]
+  
+  #Log
+  loss_log[7] <- nrow(x)
   
   #Write out
   write.table(x = loss_log,
