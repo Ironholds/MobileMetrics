@@ -2,12 +2,13 @@
 loss_logger <- function(x){
   
   #Construct vector to save
-  loss_log <- character(5)
+  loss_log <- character(6)
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
                        "Production requests",
                        "Project requests",
-                       "Completed requests")
+                       "Completed requests",
+                       "External requests")
   
   #Log initial rows
   loss_log[1] <- nrow(x)
@@ -49,12 +50,17 @@ loss_logger <- function(x){
   loss_log[5] <- nrow(x)
   
   #Format timestamps
-  x$timestamp <- x$timestamp <- strptime(substring(x$timestamp,1,13), format = "%Y-%m-%dT%H")
+  x$timestamp <- strptime(substring(x$timestamp,1,13), format = "%Y-%m-%dT%H")
   
+  #Remove Internal sources of requests
+  x <- x[!grepl(x = x$UA, pattern = internal_sources),]
+  
+  #Log
+  loss_log[6] <- nrow(x)
   
   #Write out
   write.table(x = loss_log,
-              file = file.path(getwd(),"Logs",paste(curdate,"metadata.tsv", sep = "_")),
+              file = file.path(getwd(),"Logs",paste(curdate,"loss_log.tsv", sep = "_")),
               quote = TRUE,
               sep = "\t")
   

@@ -34,8 +34,13 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
                     "application/yaml; charset=ISO-8859-1",
                     "application/yaml")
 
+#Internal sources of requests
+internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API")
+
+#Bots
 bot_browsers <- c()
 
 mobile_browsers <- c()
 
+mobile_apps <- c("(WikipediaMobile|Wikipanion|iWiki|WikiEgg|Wikipanion|^Articles|Wikiweb|WikipediaApp|Wikiamo")
 table_devices <- c()
