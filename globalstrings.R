@@ -45,5 +45,7 @@ bot_browsers <- c()
 
 mobile_browsers <- c()
 
-mobile_apps <- c("(WikipediaMobile|Wikipanion|iWiki|WikiEgg|Wikipanion|^Articles|Wikiweb|WikipediaApp|Wikiamo")
+mobile_apps <- c("(WikipediaMobile|Wikipanion|iWiki|WikiEgg|Wikipanion|^Articles|Wikiweb|WikipediaApp|Wikiamo)")
 table_devices <- c()
+
+desired_columns <- c("URL","MIME","UA","x_analytics","device","os","browser","browser_version")

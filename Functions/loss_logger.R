@@ -67,7 +67,7 @@ loss_logger <- function(x){
   
   #Write out
   write.table(x = loss_log,
-              file = file.path(getwd(),"Logs",paste(curdate,"loss_log.tsv", sep = "_")),
+              file = file.path(getwd(),"Logs",curdate,"loss_log.tsv"),
               quote = TRUE,
               sep = "\t")
   
