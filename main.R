@@ -12,7 +12,7 @@ mobilemetrics <- function(){
     curdate <<- substring(text = curfile, first = 47, last = 54)
     
     #Create the logging directory
-    dir.create(file.path(getwd(),"Logs",curdate))
+    dir.create(file.path(getwd(),"Logs",curdate), showWarnings = FALSE)
     
     #Read in the latest file
     dailydata <- file_reader(file = curfile)
