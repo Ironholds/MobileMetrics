@@ -1,4 +1,4 @@
-ua_parse <- function(x, data = c("device","os","browser","browser_version")){
+ua_parse <- function(x, data = c("device","os","browser","browser_version","browser_minor")){
   
   #Convert UAs into a JSON object and write out
   cat(toJSON(x = x$UA), file = "user_agent_input.json")
