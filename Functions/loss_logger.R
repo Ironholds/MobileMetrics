@@ -43,7 +43,7 @@ loss_logger <- function(x){
   loss_log[4] <- nrow(x)
   
   #Filter to completed, non-redirected requests
-  x <- x[grepl(x = x$status_code, pattern = "200"),]
+  x <- x[custodiet(x = x$status_code, start = 1, end = 20, regex = "200", name = "uncompleted"),]
   
   #Log those
   loss_log[5] <- nrow(x)
@@ -52,13 +52,13 @@ loss_logger <- function(x){
   x$timestamp <- strptime(substring(x$timestamp,1,13), format = "%Y-%m-%dT%H")
   
   #Remove Internal sources of requests
-  x <- x[!grepl(x = x$UA, pattern = internal_sources),]
+  x <- x[!custodiet(x = x$UA, start = 1, end = nchar(x$UA), regex = internal_sources, name = "internal"),]
   
   #Log
   loss_log[6] <- nrow(x)
   
   #Filter out non-content requests
-  x <- x[grepl(x = x$URL, pattern = content_sources),]
+  x <- x[custodiet(x = x$URL, start = 1, end = 50, regex = content_sources, name = "content"),]
   
   #Log
   loss_log[7] <- nrow(x)
