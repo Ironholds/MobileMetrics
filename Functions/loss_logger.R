@@ -31,9 +31,7 @@ loss_logger <- function(x){
   loss_log[2] <- nrow(x)
   
   #Remove non-project hits
-  y <- x[!grepl(pattern = "(((commons|meta|species)\\.(m\\.)?wikimedia)|wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))",
-               x = x$URL,
-               ignore.case = TRUE),]
+  x <- x[custodiet(x = x$URL, start = 1, end = 30, regex = project_sources, name = "non_project", ignore.case = TRUE),]
     
   #Log non-project loss
   loss_log[3] <- nrow(x)
