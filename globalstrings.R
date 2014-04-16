@@ -35,7 +35,7 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
                     "application/yaml")
 
 #Actual projects
-project_sources <- c("(((commons|meta|species)\\.(m\\.)?wikimedia)|wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))")
+project_sources <- c("(mediawiki|((commons|meta|species)\\.(m\\.)?wikimedia)|(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))")
 
 #Internal sources of requests
 internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API)")

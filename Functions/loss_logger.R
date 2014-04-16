@@ -5,8 +5,8 @@ loss_logger <- function(x){
   loss_log <- character(7)
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
-                       "Production requests",
                        "Project requests",
+                       "Production requests",
                        "Completed requests",
                        "External requests",
                        "Content requests")
@@ -30,16 +30,16 @@ loss_logger <- function(x){
   #Log UTF-8 loss
   loss_log[2] <- nrow(x)
   
-  #Remove non-project hits
-  x <- x[custodiet(x = x$URL, start = 1, end = 30, regex = project_sources, name = "non_project", ignore.case = TRUE),]
-    
-  #Log non-project loss
-  loss_log[3] <- nrow(x)
-  
   #Remove non-text/html,application hits
   x <- x[x$MIME %in% accepted_MIMES,]
   
   #Log non-pageview loss
+  loss_log[3] <- nrow(x)
+  
+  #Remove non-project hits
+  x <- x[custodiet(x = x$URL, start = 1, end = 30, regex = project_sources, name = "non_project", ignore.case = TRUE),]
+  
+  #Log non-project loss
   loss_log[4] <- nrow(x)
   
   #Filter to completed, non-redirected requests
