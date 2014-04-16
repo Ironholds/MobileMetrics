@@ -34,6 +34,9 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
                     "application/yaml; charset=ISO-8859-1",
                     "application/yaml")
 
+#Actual projects
+project_sources <- c("(((commons|meta|species)\\.(m\\.)?wikimedia)|wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))")
+
 #Internal sources of requests
 internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API)")
 
@@ -48,4 +51,4 @@ mobile_browsers <- c()
 mobile_apps <- c("(WikipediaMobile|Wikipanion|iWiki|WikiEgg|Wikipanion|^Articles|Wikiweb|WikipediaApp|Wikiamo)")
 table_devices <- c()
 
-desired_columns <- c("URL","MIME","UA","x_analytics","device","os","browser","browser_version")
+desired_columns <- c("URL","MIME","UA","x_analytics","device","os","browser","browser_version","browser_minor")

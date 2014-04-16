@@ -6,10 +6,13 @@ source("globalstrings.R")
 mobilemetrics <- function(){
   
   #RequestLog parser
-  rl_parse <- function(curfile, desired_columns = c("timestamp","x_forwarded","UA","device","os","browser","browser_version")){
+  rl_parse <- function(curfile)){
     
     #Store the date
     curdate <<- substring(text = curfile, first = 47, last = 54)
+    
+    #Create the logging directory
+    dir.create(file.path(getwd(),"Logs",curdate))
     
     #Read in the latest file
     dailydata <- file_reader(file = curfile)
@@ -38,8 +41,11 @@ mobilemetrics <- function(){
   
   #Bind the resulting list into a single dataframe
   recent_data <- do.call("rbind",recent_data)
+  
+  save(recent_data, file = "recent.RData")
 
 }
+
 mobilemetrics()
 
 q(save = "no")
