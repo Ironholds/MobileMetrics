@@ -35,13 +35,15 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
                     "application/yaml")
 
 #Actual projects
-project_sources <- c("(mediawiki|((commons|meta|species)\\.(m\\.)?wikimedia)|(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata))")
+project_sources <- c("(mediawiki|((commons|meta|species)\\.(m\\.)?wikimedia)|(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
 #Internal sources of requests
 internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API)")
 
 #Content sources
 content_sources <- c("(/w/|/wiki/|/zh/|/zh-tw/|/zh-cn/|/zh-hant/|/zh-mo/|/zh-hans/|/zh-hk/|/sr/|/zh-sg/|/sr-hl/|/sr-el/)")
+
+mobile_web <- c("(\\.m\\.mediawiki|((commons|meta|species)\\.m\\.wikimedia)|\\.m\\.(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
 #Bots
 bot_browsers <- c()
