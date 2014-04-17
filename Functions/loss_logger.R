@@ -52,7 +52,7 @@ loss_logger <- function(x){
   x$timestamp <- strptime(substring(x$timestamp,1,13), format = "%Y-%m-%dT%H")
   
   #Remove Internal sources of requests
-  x <- x[!custodiet(x = x$UA, start = 1, end = nchar(x$UA), regex = internal_sources, name = "internal"),]
+  x <- x[!custodiet(x = x$UA, start = 1, end = 50, regex = internal_sources, name = "internal"),]
   
   #Log
   loss_log[6] <- nrow(x)
