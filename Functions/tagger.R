@@ -1,8 +1,8 @@
 #Tags and adds categories
-tagger <- function(x, regex, values,...){
+tagger <- function(x, regex, values, start, end, name, ...){
   
   #Run the regex over X, generating a resultant boolean vector
-  bools <- grepl(x = x, pattern = regex, ...)
+  bools <- custodiet(x = x, regex = regex, start = start, end = end, name = name, ...)
   
   #Replace bools
   bools[TRUE] <- values[1]
