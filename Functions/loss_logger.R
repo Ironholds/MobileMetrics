@@ -22,10 +22,10 @@ loss_logger <- function(x){
     #Replace with iconverted entries
     x[,dailynames[i]] <- iconv(x = x[,dailynames[i]], to = "UTF-8")
     
-    #Remove rows with newly-introduced NAs
-    x <- x[!is.na(x[,dailynames[i]]),]
-    
   }
+  
+  #Exclude incomplete cases
+  x <- x[complete.cases(x),]
   
   #Log UTF-8 loss
   loss_log[2] <- nrow(x)
