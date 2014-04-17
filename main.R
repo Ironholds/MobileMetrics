@@ -6,7 +6,7 @@ source("globalstrings.R")
 mobilemetrics <- function(){
   
   #RequestLog parser
-  rl_parse <- function(curfile)){
+  rl_parse <- function(curfile){
     
     #Store the date
     curdate <<- substring(text = curfile, first = 47, last = 54)
