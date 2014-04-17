@@ -5,8 +5,8 @@ tagger <- function(x, regex, values, start, end, name, ...){
   bools <- custodiet(x = x, regex = regex, start = start, end = end, name = name, ...)
   
   #Replace bools
-  bools[TRUE] <- values[1]
-  bools[FALSE] <- values[2]
+  bools[bools == TRUE] <- values[1]
+  bools[bools == FALSE] <- values[2]
   
   #Return
   return(bools)
