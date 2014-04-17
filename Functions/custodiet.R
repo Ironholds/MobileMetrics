@@ -5,7 +5,8 @@ custodiet <- function(x, start, end, regex, name, ...){
   output.df <- as.data.frame(substring(x,start,end))
   
   #Run the regex over the object
-  output.df$reg_results <- grepl(x = x, pattern = regex, ...)
+  to_return <- grepl(x = x, pattern = regex, ...)
+  output.df$reg_results <- to_return
   
   #Randomly sample 10,000 rows.
   output.df <- output.df[sample(1:nrow(output.df), 10000),]
@@ -18,5 +19,5 @@ custodiet <- function(x, start, end, regex, name, ...){
               quote = TRUE, sep = "\t", row.names = FALSE)
   
   #Return the regex results
-  return(output.df$hit)
+  return(to_return)
 }
