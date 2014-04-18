@@ -23,9 +23,10 @@ mobilemetrics <- function(){
     #Identify user agents
     dailydata <- ua_parse(dailydata)
     
-    #Return
-    return(dailydata[,desired_columns])
+    #Handle initial tagging
+    dailydata <- tag_logger(x = dailydata)
     
+    return(dailydata)
   }
   
   #List files
@@ -34,7 +35,7 @@ mobilemetrics <- function(){
                          full.names = TRUE)
   
   #Limit to the most recent month
-  curfiles <- filelist[(length(filelist)-29):length(filelist)]
+  curfiles <- filelist[(length(filelist)-30):(length(filelist)-1)]
   
   #Run rl_parse over the files
   recent_data <- lapply(curfiles, rl_parse)
@@ -42,6 +43,10 @@ mobilemetrics <- function(){
   #Bind the resulting list into a single dataframe
   recent_data <- do.call("rbind",recent_data)
   
+  #Analyse
+  manguel(recent_data)
+  
+  #Save
   save(recent_data, file = "recent.RData")
 
 }
