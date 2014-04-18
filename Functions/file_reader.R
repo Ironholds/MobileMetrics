@@ -1,6 +1,16 @@
 #Reads sample log files
 file_reader <- function(file){
   
+  #If the files somehow already exist, remove them
+  if(file.exists("./Data/dailydata.tsv")){
+    
+    file.remove("./Data/dailydata.tsv")
+  }
+  if(file.exists("./Data/processeddata.tsv")){
+    
+    file.remove("./Data/processeddata.tsv")
+  }
+  
   #Move file into the current directory and unzip
   file.copy(from = file, to = file.path(getwd(),"Data","dailydata.tsv.gz"), overwrite = TRUE)
   system("gunzip ./Data/dailydata.tsv.gz")
