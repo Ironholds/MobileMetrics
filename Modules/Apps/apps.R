@@ -21,10 +21,10 @@ apps <- function(x){
                     })
   
   #Rename
-  names(app_data) <- c("timestamp","ourApp","otherApps","android","iOS","unidentifiable","other")
+  names(app_data) <- c("timestamp","Wikimedia","ExternalApps","android","iOS","unidentifiable","other")
   
   #Split out and reshape
-  app_breakdown <- melt(app_data[,c("timestamp","ourApp","otherApps")], id.vars = 1, measure.vars = 2:3)
+  app_breakdown <- melt(app_data[,c("timestamp","Wikimedia","ExternalApps")], id.vars = 1, measure.vars = 2:3)
   os_breakdown <- melt(app_data[,c("timestamp","android","iOS","unidentifiable","other")], id.vars = 1, measure.vars = 2:5)
   
   #Write
@@ -46,4 +46,5 @@ apps <- function(x){
     write.table(x = os_breakdown, file = file.path(getwd(),"Output","apps_by_os.tsv"),
                 append = FALSE, quote = TRUE, sep = "\t", row.names = FALSE, col.names = TRUE)
   }
+  
 }
