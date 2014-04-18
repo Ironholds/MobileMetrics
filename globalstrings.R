@@ -45,12 +45,6 @@ content_sources <- c("(/w/|/wiki/|/zh/|/zh-tw/|/zh-cn/|/zh-hant/|/zh-mo/|/zh-han
 
 mobile_web <- c("(\\.m\\.mediawiki|((commons|meta|species)\\.m\\.wikimedia)|\\.m\\.(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
-#Bots
-bot_browsers <- c()
-
-mobile_browsers <- c()
-
 mobile_apps <- c("(WikipediaMobile|Wikipanion|iWiki|WikiEgg|Wikipanion|^Articles|Wikiweb|WikipediaApp|Wikiamo)")
-table_devices <- c()
 
-desired_columns <- c("URL","MIME","UA","x_analytics","device","os","browser","browser_version","browser_minor")
+desired_columns <- c("timestamp","URL","MIME","UA","x_analytics","device","os","browser","browser_version","browser_minor")
