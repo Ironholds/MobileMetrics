@@ -24,8 +24,8 @@ apps <- function(x){
   names(app_data) <- c("timestamp","Wikimedia","ExternalApps","android","iOS","unidentifiable","other")
   
   #Split out and reshape
-  app_breakdown <- melt(app_data[,c("timestamp","Wikimedia","ExternalApps")], id.vars = 1, measure.vars = 2:3)
-  os_breakdown <- melt(app_data[,c("timestamp","android","iOS","unidentifiable","other")], id.vars = 1, measure.vars = 2:5)
+  app_breakdown <- melt(app_data[,c("timestamp","Wikimedia","ExternalApps"),], id.vars = 1, measure.vars = 2:3)
+  os_breakdown <- melt(app_data[,c("timestamp","android","iOS","unidentifiable","other"),], id.vars = 1, measure.vars = 2:5)
   
   #Write
   if(file.exists(file.path(getwd(),"Output","apps_by_provider.tsv"))){
