@@ -43,11 +43,11 @@ mobilemetrics <- function(){
   #Bind the resulting list into a single dataframe
   recent_data <- do.call("rbind",recent_data)
   
-  #Analyse
-  manguel(recent_data)
-  
   #Save
   save(recent_data, file = "recent.RData")
+  
+  #Analyse
+  manguel(recent_data)
 
 }
 
