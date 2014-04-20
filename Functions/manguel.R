@@ -6,7 +6,7 @@ manguel <- function(x){
   
   #Load modules
   ignore <- lapply(list.files(file.path(getwd(),"Modules"),
-                              pattern = "*.R", recursive = TRUE),source)
+                              pattern = "*.R", recursive = TRUE, full.names = TRUE),source)
   
   #App data
   apps(x[x$method == "app",])
