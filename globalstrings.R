@@ -38,7 +38,7 @@ accepted_MIMES <- c("text/html; charset=UTF-8",
 project_sources <- c("(mediawiki|((commons|meta|species)\\.(m\\.)?wikimedia)|(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
 #Internal sources of requests
-internal_sources <- c("(ForeignAPIRepo|Parsoid|MediaWiki|Commons API)")
+internal_sources <- "(ForeignAPIRepo|Parsoid|MediaWiki(?!(Crawler| Bot))|Commons API)"
 
 #Content sources
 content_sources <- c("(/\\?title=|/wiki\\?curid=|/sr-ec/|/w/|/wiki/|/zh/|/zh-tw/|/zh-cn/|/zh-hant/|/zh-mo/|/zh-hans/|/zh-hk/|/sr/|/zh-sg/|/sr-hl/|/sr-el/)")
