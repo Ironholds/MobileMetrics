@@ -16,7 +16,7 @@ file_reader <- function(file){
   system("gunzip ./Data/dailydata.tsv.gz")
   
   #Awk the hell out of it
-  system("awk -f awkstrings ./Data/dailydata.tsv")
+  system("awk -f strings.awk ./Data/dailydata.tsv")
   
   #Read it in
   data.df <- read.delim(file = "./Data/processeddata.tsv", sep = "\t", header = FALSE, 
