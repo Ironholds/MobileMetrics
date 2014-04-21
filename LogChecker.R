@@ -1,7 +1,7 @@
 library(plyr)
 
 #Compresses the custodiet logs to allow for easier parsing, checking and hand-coding.
-LogChecker <- function(){
+LogChecker <- function(aggregate = TRUE){
   
   #Read file type
   file_type <- readline("File Type: \n")
@@ -16,13 +16,17 @@ LogChecker <- function(){
   #Format into a single df
   data <- do.call("rbind",data)
   
-  #Remove dupes but keep count
-  data <- ddply(.data = data,
-                .variables = "substring",
-                .fun = function(x){as.data.frame(table(x$hit), stringsAsFactors = FALSE)})
+  if(aggregate){
+    
+    #Remove dupes but keep count
+    data <- ddply(.data = data,
+                  .variables = "substring",
+                  .fun = function(x){as.data.frame(table(x$hit), stringsAsFactors = FALSE)})
+    
+    #Reorder
+    data <- data[order(data$Var1,data$Freq, decreasing = TRUE),]
   
-  #Reorder
-  data <- data[order(data$Var1,data$Freq, decreasing = TRUE),]
+  }
   
   #Return
   return(data)
