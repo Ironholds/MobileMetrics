@@ -7,7 +7,7 @@ apps <- function(x){
                     .fun = function(x){
                       
                       #Count the number of hits to "our" app, and to all others
-                      our_hits <- (sum(grepl(x = x$UA, pattern = "(WikipediaMobile|WikipediaApp)"))/nrow(x))*100
+                      our_hits <- (sum(grepl(x = x$UA, pattern = "(WikipediaMobile|WikipediaApp|WiktionaryMobile)"))/nrow(x))*100
                       their_hits <- 100-our_hits
                       
                       #Count breakdown by OS
