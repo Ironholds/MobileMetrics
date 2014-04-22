@@ -1,6 +1,9 @@
 #App-based data
 apps <- function(x){
   
+  #Temporary patch to handle iOS, until ua-parser catches up.
+  x$os[grepl(x = x$UA, pattern = "Darwin", ignore.case = TRUE)] <- "iOS"
+  
   #For each day/hour...
   app_data <- ddply(.data = x,
                     .variables = "timestamp",

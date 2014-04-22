@@ -63,6 +63,9 @@ mobilemetrics <- function(){
   #Bind the resulting list into a single dataframe
   recent_data <- do.call("rbind",recent_data)
   
+  #Limit
+  recent_data <- recent_data[,desired_columns]
+  
   #Save
   save(recent_data, file = "recent.RData")
   
