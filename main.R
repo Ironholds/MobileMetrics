@@ -26,7 +26,7 @@ mobilemetrics <- function(){
     #Filter it, logging the filter results
     time_test <- rbind(time_test, c("filter",system.time({
       dailydata <- loss_logger(x = dailydata)
-    }))
+    })))
     
     #Identify user agents
     time_test <- rbind(time_test, c("identification",system.time({
