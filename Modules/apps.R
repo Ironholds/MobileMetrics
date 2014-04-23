@@ -15,9 +15,9 @@ apps <- function(x){
                       iOS <- (nrow(x[x$os == "iOS",])/nrow(x))*100
                       unidentifiable <- (nrow(x[x$os == "Other",])/nrow(x))*100
                       other <- (nrow(x[!x$os %in% c("Android","iOS","Other"),])/nrow(x))*100
-                      tablet <- (nrow(x[x$device %in% tablet_devices | x$os %in% tablet_os,]))*100
-                      phone <- (nrow(x[x$device %in% mobile_devices | x$os %in% mobile_os,]))*100
-                      
+                      tablet <- (nrow(x[x$device %in% tablet_devices | x$os %in% tablet_os,])/nrow(x))*100
+                      phone <- (nrow(x[x$device %in% mobile_devices | x$os %in% mobile_os,])/nrow(x))*100
+                      unknown <- (nrow(x[!x$device %in% c(tablet_devices,mobile_devices) ]))
                       #Turn into a vector and return
                       return(c(our_hits,their_hits,android,iOS,unidentifiable,other))
                     })
