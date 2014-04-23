@@ -15,37 +15,26 @@ apps <- function(x){
                       iOS <- (nrow(x[x$os == "iOS",])/nrow(x))*100
                       unidentifiable <- (nrow(x[x$os == "Other",])/nrow(x))*100
                       other <- (nrow(x[!x$os %in% c("Android","iOS","Other"),])/nrow(x))*100
+                      tablet <- (nrow(x[x$device %in% tablet_devices | x$os %in% tablet_os,]))*100
+                      phone <- (nrow(x[x$device %in% mobile_devices | x$os %in% mobile_os,]))*100
                       
                       #Turn into a vector and return
                       return(c(our_hits,their_hits,android,iOS,unidentifiable,other))
                     })
   
   #Rename
-  names(app_data) <- c("timestamp","Wikimedia","ExternalApps","android","iOS","unidentifiable","other")
+  names(app_data) <- c("timestamp","Wikimedia","ExternalApps","android","iOS","unidentifiable","other","Tablet","Phone")
   
-  #Split out and reshape
-  app_breakdown <- melt(app_data[,c("timestamp","Wikimedia","ExternalApps"),], id.vars = 1, measure.vars = 2:3)
-  os_breakdown <- melt(app_data[,c("timestamp","android","iOS","unidentifiable","other"),], id.vars = 1, measure.vars = 2:5)
+  #Split out, reshape and write
+  FileWrite(x = melt(app_data[,c("timestamp","Wikimedia","ExternalApps"),], id.vars = 1, measure.vars = 2:3),
+            filename = file.path(getwd(),"Output","apps_by_provider.tsv"))
   
-  #Write
-  if(file.exists(file.path(getwd(),"Output","apps_by_provider.tsv"))){
-    
-    write.table(x = app_breakdown, file = file.path(getwd(),"Output","apps_by_provider.tsv"),
-                append = TRUE, quote = TRUE, sep = "\t", row.names = FALSE, col.names = FALSE)
-  } else {
-    
-    write.table(x = app_breakdown, file = file.path(getwd(),"Output","apps_by_provider.tsv"),
-                append = FALSE, quote = TRUE, sep = "\t", row.names = FALSE, col.names = TRUE)
-  }
-  if(file.exists(file.path(getwd(),"Output","apps_by_os.tsv"))){
-    
-    write.table(x = os_breakdown, file = file.path(getwd(),"Output","apps_by_os.tsv"),
-                append = TRUE, quote = TRUE, sep = "\t", row.names = FALSE, col.names = FALSE)
-  } else {
-    
-    write.table(x = os_breakdown, file = file.path(getwd(),"Output","apps_by_os.tsv"),
-                append = FALSE, quote = TRUE, sep = "\t", row.names = FALSE, col.names = TRUE)
-  }
+  FileWrite(x = melt(app_data[,c("timestamp","android","iOS","unidentifiable","other"),], id.vars = 1, measure.vars = 2:5),
+            filename = file.path(getwd(),"Output","apps_by_os.tsv"))
+
+  FileWrite(x = melt(app_data[,c("timestamp","Tablet","Phone"), id.vars = 1, measure.vars = 2:3]),
+            filename = file.path(getwd(),"Output","apps_by_device_class.tsv"))
   
+  #Done
   return(invisible())
 }
