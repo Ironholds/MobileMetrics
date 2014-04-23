@@ -19,32 +19,33 @@ mobilemetrics <- function(){
     
     
     #Read in the latest file
-    time_test <- rbind(time_test,system.time({
+    time_test <- rbind(time_test,c("file_read",system.time({
       dailydata <- file_reader(file = curfile)
-    }))
+    })))
     
     #Filter it, logging the filter results
-    time_test <- rbind(time_test, system.time({
+    time_test <- rbind(time_test, c("filter",system.time({
       dailydata <- loss_logger(x = dailydata)
     }))
     
     #Identify user agents
-    time_test <- rbind(time_test, system.time({
-      dailydata <- ua_parse(dailydata)
-    }))
+    time_test <- rbind(time_test, c("identification",system.time({
+      dailydata <- ua_parse(x = dailydata, data = c("device","os","browser","browser_version","browser_minor"))
+    })))
     
     #Handle initial tagging
-    time_test <- rbind(time_test, system.time({
+    time_test <- rbind(time_test, c("tagging",system.time({
       dailydata <- tag_logger(x = dailydata)
-    }))
+    })))
     
     #Write out time_test
-    names(time_test) <- c("user.self","sys.self","elapsed","user.child","sys.child")
+    names(time_test) <- c("stage","user.self","sys.self","elapsed","user.child","sys.child")
     write.table(time_test,
                 file = file.path(getwd(),"Logs",curdate,"time_log.tsv"),
                 quote = TRUE,
                 sep = "\t",
                 row.names = FALSE)
+    
     #Return
     return(dailydata)
   }
