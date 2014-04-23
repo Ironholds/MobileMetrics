@@ -8,11 +8,15 @@ manguel <- function(x){
   ignore <- lapply(list.files(file.path(getwd(),"Modules"),
                               pattern = "*.R", recursive = TRUE, full.names = TRUE),source)
   
-  #App data
+  
+  #Data on apps usage
   apps(x[x$method == "app",])
   
-  #Web data
+  #Data on comparative web usage
   web(x[x$method == "app" | x$site == "mobile",])
+  
+  #Data on comparative tablet/phone destinations
+  tablet(x[x$os %in% c(mobile_os,tablet_os) | x$device %in% c(tablet_devices,mobile_devices),])
   
   #Return invisibly
   return(invisible())
