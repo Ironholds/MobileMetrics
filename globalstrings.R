@@ -63,3 +63,7 @@ mobile_devices <- c("iPhone","GT-I9300","GT-I9100","Generic Feature Phone","GT-I
 
 tablet_devices <- c("iPad","Nexus 7","Kindle Fire HD 7\" WiFi", "Kindle Fire HD",
                     "Kindle Fire HDX 7\" WiFi","GT-P5110","GT-P3100","Kindle Fire")
+
+mobile_os <- c("Firefox OS","Windows Phone","Windows Mobile")
+
+tablet_os <- c("Windows RT", "Windows RT 8.1", "Blackberry Tablet OS")
