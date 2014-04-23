@@ -43,8 +43,23 @@ internal_sources <- "(ForeignAPIRepo|Parsoid|MediaWiki(?!(Crawler| Bot))|Commons
 #Content sources
 content_sources <- c("(/\\?title=|/wiki\\?curid=|/sr-ec/|/w/|/wiki/|/zh/|/zh-tw/|/zh-cn/|/zh-hant/|/zh-mo/|/zh-hans/|/zh-hk/|/sr/|/zh-sg/|/sr-hl/|/sr-el/)")
 
+#Indicates the mobile website
 mobile_web <- c("(\\.m\\.mediawiki|((commons|meta|species)\\.m\\.wikimedia)|\\.m\\.(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
+#Indicates particular mobile apps
 mobile_apps <- c("(WikipediaMobile|iWiki|WikiEgg|Wikipanion|WiktionaryMobile|^Articles|Wikiweb|WikipediaApp|Wikiamo|WikiLinks)")
 
+#Columns we want to keep after tagging/logging/etc,etc,etc
 desired_columns <- c("timestamp","URL","MIME","UA","x_analytics","device","os","browser","browser_version","browser_minor")
+
+#mobile devices
+mobile_devices <- c("iPhone","GT-I9300","GT-I9100","Generic Feature Phone","GT-I9505","HTC One",
+                    "GT-I8190","Lumia 520","GT-N7100","SCH-I535","Nexus 5","SAMSUNG GT-I9505",
+                    "Nexus 4","SPH-L710","GT-I9500","SAMSUNG-SGH-I337","C6603","GT-S5830i",
+                    "SAMSUNG-SGH-I747","GT-I9195","GT-S5360","GT-I8190N","SCH-I545",
+                    "Galaxy Nexus","SonySO-04E","C6903","GT-I8160","GT-I8190L",
+                    "XT1032","DROID RAZR","BlackBerry 9320","Lumia 920",
+                    "GT-N7000","GT-S7562","XT907")
+
+tablet_devices <- c("iPad","Nexus 7","Kindle Fire HD 7\" WiFi", "Kindle Fire HD",
+                    "Kindle Fire HDX 7\" WiFi","GT-P5110","GT-P3100","Kindle Fire")
