@@ -17,7 +17,6 @@ mobilemetrics <- function(){
     #Create the logging directory
     dir.create(file.path(getwd(),"Logs",curdate), showWarnings = FALSE)
     
-    
     #Read in the latest file
     time_test <- rbind(time_test,c("file_read",system.time({
       dailydata <- file_reader(file = curfile)
