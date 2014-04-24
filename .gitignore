@@ -8,3 +8,6 @@
 .Rdata
 .Rproj.user
 *.Rproj
+
+Logs/*
+Output/*
