@@ -2,7 +2,7 @@
 loss_logger <- function(x){
   
   #Construct vector to save
-  loss_log <- character(8)
+  loss_log <- character(9)
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
                        "Project requests",
@@ -10,7 +10,8 @@ loss_logger <- function(x){
                        "Completed requests",
                        "External requests",
                        "Content requests",
-                       "Non-API/Desired API requests")
+                       "Non-API/Desired API requests",
+                       "Non-SSL redirection requests")
   
   #Log initial rows
   loss_log[1] <- nrow(x)
@@ -69,6 +70,11 @@ loss_logger <- function(x){
   
   #Log
   loss_log[8] <- nrow(x)
+  
+  #Filter out entries from SSL terminators
+  x <- x[custodiet(x = x$squid, start = 1, end = nchar(x$squid), regex = "ssl", name = "ssl"),]
+  
+  loss_log[9] <- nrow(x)
   
   #Write out
   write.table(x = loss_log,
