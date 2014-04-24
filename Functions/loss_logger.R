@@ -44,7 +44,7 @@ loss_logger <- function(x){
   loss_log[4] <- nrow(x)
   
   #Filter to completed, non-redirected requests
-  x <- x[custodiet(x = x$status_code, start = 1, end = 20, regex = "200", name = "uncompleted"),]
+  x <- x[custodiet(x = x$status_code, start = 1, end = 20, regex = "(200|304)", name = "uncompleted"),]
   
   #Log those
   loss_log[5] <- nrow(x)
