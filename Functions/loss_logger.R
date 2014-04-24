@@ -2,14 +2,15 @@
 loss_logger <- function(x){
   
   #Construct vector to save
-  loss_log <- character(7)
+  loss_log <- character(8)
   names(loss_log) <- c("Total requests",
                        "UTF-8 requests",
                        "Project requests",
                        "Production requests",
                        "Completed requests",
                        "External requests",
-                       "Content requests")
+                       "Content requests",
+                       "Non-API/Desired API requests")
   
   #Log initial rows
   loss_log[1] <- nrow(x)
@@ -62,6 +63,12 @@ loss_logger <- function(x){
   
   #Log
   loss_log[7] <- nrow(x)
+  
+  #Filter out undesired API requests
+  x <- x[custodiet(x = x$URL, start = 30, end = 60, regex = undesired_APIs, name = "api"),]
+  
+  #Log
+  loss_log[8] <- nrow(x)
   
   #Write out
   write.table(x = loss_log,
