@@ -29,7 +29,7 @@ mobilemetrics <- function(){
     
     #Identify user agents
     time_test <- rbind(time_test, c("identification",system.time({
-      dailydata <- ua_parse(x = dailydata, data = c("device","os","browser","browser_version","browser_minor"))
+      dailydata <- ua_parse(x = dailydata, data = c("device","os","browser","browser_version"))
     })))
     
     #Handle initial tagging
