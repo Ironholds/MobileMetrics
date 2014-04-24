@@ -54,10 +54,10 @@ content_sources <- c("(/\\?title=|/wiki\\?curid=|/sr-ec/|/w/|/wiki/|/zh/|/zh-tw/
 mobile_web <- c("(\\.m\\.mediawiki|((commons|meta|species)\\.m\\.wikimedia)|\\.m\\.(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
 #Indicates particular mobile apps
-mobile_apps <- c("(WikipediaMobile|iWiki|WikiEgg|Wikipanion|WiktionaryMobile|^Articles|Wikiweb|WikipediaApp|Wikiamo|WikiLinks)")
+mobile_apps <- c("(WikipediaMobile|iWiki|WikiEgg|Quickipedia(?! (bot)|Wikipanion|WiktionaryMobile|^Articles|Wikiweb|WikipediaApp|Wikiamo|WikiLinks)")
 
 #undesirable API requests
-undesired_APIs <- c("(action=opensearch)")
+undesired_APIs <- c("(action=opensearch|prop=pageimage|)")
 
 #Columns we want to keep after tagging/logging/etc,etc,etc
 desired_columns <- c("timestamp","URL","MIME","UA","x_analytics","device","os","browser","browser_version","browser_minor")
