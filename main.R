@@ -64,10 +64,10 @@ mobilemetrics <- function(){
   recent_data <- do.call("rbind",recent_data)
   
   #Limit
-  recent_data <- recent_data[,desired_columns]
+  recent_data <- recent_data[, desired_columns]
   
   #Save
-  save(recent_data, file = "recent.RData")
+  save(recent_data, file = paste(curdate,"recent.RData",sep = "_"))
   
   #Analyse
   manguel(recent_data)
