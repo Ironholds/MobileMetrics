@@ -66,13 +66,13 @@ loss_logger <- function(x){
   loss_log[7] <- nrow(x)
   
   #Filter out undesired API requests
-  x <- x[custodiet(x = x$URL, start = 30, end = 60, regex = undesired_APIs, name = "api"),]
+  x <- x[!custodiet(x = x$URL, start = 30, end = 60, regex = undesired_APIs, name = "api"),]
   
   #Log
   loss_log[8] <- nrow(x)
   
   #Filter out entries from SSL terminators
-  x <- x[custodiet(x = x$squid, start = 1, end = nchar(x$squid), regex = "ssl", name = "ssl"),]
+  x <- x[!custodiet(x = x$squid, start = 1, end = nchar(x$squid), regex = "ssl", name = "ssl"),]
   
   loss_log[9] <- nrow(x)
   

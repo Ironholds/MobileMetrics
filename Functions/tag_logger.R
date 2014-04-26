@@ -11,7 +11,7 @@ tag_logger <- function(x){
   tag_log[1] <- nrow(x[x$site == "mobile",])
   
   #App or non-App?
-  x$method <- tagger(x = x$UA, regex = mobile_apps, values = c("app","non-app"), start = 1, end = 30, name = "app")
+  x$method <- tagger(x = x$UA, regex = mobile_apps, values = c("app","non-app"), start = 1, end = 30, name = "app", perl = TRUE)
   tag_log[2] <- nrow(x[x$method == "app",])
   
   #Zero or non-zero?
