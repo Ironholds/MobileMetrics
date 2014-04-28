@@ -1,4 +1,4 @@
-FileWrite <- function(x, filename){
+FileWrite <- function(x, ids, measures, filename){
   
   if(file.exists(filename)){
     
