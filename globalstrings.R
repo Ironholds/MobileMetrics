@@ -60,7 +60,7 @@ mobile_apps <- c("(WikipediaMobile|iWiki|WikiEgg|Quickipedia(?!( bot))|Wikipanio
 undesired_APIs <- c("(action=(feedrecentchanges|opensearch|ajax|compare)|prop=(pageimage|imageinfo&)|&sections=0|list=(allpages|recentchanges|categorymembers|search)|api\\.php$)")
 
 #Columns we want to keep after tagging/logging/etc,etc,etc
-desired_columns <- c("timestamp","URL","MIME","UA","x_analytics","device","os","browser","browser_version")
+desired_columns <- c("timestamp","URL","MIME","UA","x_analytics","site","method","zero","device","os","browser","browser_version")
 
 #mobile devices
 mobile_devices <- c("iPhone","GT-I9300","GT-I9100","Generic Feature Phone","GT-I9505","HTC One",
