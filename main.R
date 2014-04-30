@@ -55,7 +55,7 @@ mobilemetrics <- function(){
                          full.names = TRUE)
   
   #Limit to the most recent month
-  curfiles <- filelist[(length(filelist)-30):(length(filelist)-1)]
+  curfiles <- filelist[(length(filelist)-29):length(filelist)]
   
   #Run rl_parse over the files
   recent_data <- lapply(curfiles, rl_parse)
