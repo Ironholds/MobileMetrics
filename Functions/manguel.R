@@ -33,17 +33,20 @@ manguel <- function(x){
   
   #Pass into grapher, chunk by chunk
   #PV data
-  grapher(data = analysis[,1:4],
+  pv_breakdown <- analysis[,1:4]
+  pv_absolute <- rowSums(pv_breakdown[,2:4])
+  pv_breakdown[,2:4] <- pv_breakdown[,2:4]/pv_absolute
+  grapher(data = pv_breakdown,
           title = "Mean daily pageviews, per site",
           file = "pageviews")
   
   #mobile site hits
   hits_breakdown <- analysis[,c(1,5:8)]
-  hits_breakdown[,2] <- (hits_breakdown[,2]/rowSums(hits_breakdown[,c(2,4)]))*100
-  hits_breakdown[,3] <- (hits_breakdown[,3]/rowSums(hits_breakdown[,c(3,5)]))*100
+  hits_breakdown[,2] <- (hits_breakdown[,2]/rowSums(hits_breakdown[,c(2,4)]))
+  hits_breakdown[,3] <- (hits_breakdown[,3]/rowSums(hits_breakdown[,c(3,5)]))
   hits_breakdown <- hits_breakdown[,1:3]
   grapher(data = hits_breakdown,
-          title = "Destination for phones versus tablets (percentage)",
+          title = "Destination for phones versus tablets",
           file = "destination")
   
   #Breakdown by device
@@ -54,48 +57,35 @@ manguel <- function(x){
   device_breakdown <- device_breakdown[,1:3]
   names(device_breakdown) <- c("timestamp","tablet","phone")
   grapher(data = device_breakdown,
-          title = "Mean daily pageviews, tablets versus phones (percentage)",
-          file = "device_pageviews",
-          is.percent = TRUE)
+          title = "Mean daily pageviews, tablets versus phones",
+          file = "device_pageviews")
   
   #OS, apps
   os_breakdown <- analysis[,c(1,9:12)]
   os_absolute <- rowSums(os_breakdown[,2:5])
-  os_breakdown[,2] <- (os_breakdown[,2]/os_absolute)
-  os_breakdown[,3] <- (os_breakdown[,3]/os_absolute)
-  os_breakdown[,4] <- (os_breakdown[,4]/os_absolute)
-  os_breakdown[,5] <- (os_breakdown[,5]/os_absolute)
+  os_breakdown[,2:5] <- (os_breakdown[,2:5]/os_absolute)
   
   grapher(data = os_breakdown,
-          title = "Operating system for apps (percentage)",
-          file = "app_os",
-          is.percent = TRUE)
+          title = "Operating system for apps",
+          file = "app_os")
   
   #OS, phones
   phone_breakdown <- analysis[,c(1,13:16)]
   phone_absolute <- rowSums(phone_breakdown[,2:5])
-  phone_breakdown[,2] <- (phone_breakdown[,2]/phone_absolute)
-  phone_breakdown[,3] <- (phone_breakdown[,3]/phone_absolute)
-  phone_breakdown[,4] <- (phone_breakdown[,4]/phone_absolute)
-  phone_breakdown[,5] <- (phone_breakdown[,5]/phone_absolute)
+  phone_breakdown[,2:5] <- (phone_breakdown[,2:5]/phone_absolute)
   
   grapher(data = phone_breakdown,
-          title = "Operating system for mobile phones (percentage)",
-          file = "phone_os",
-          is.percent = TRUE)
+          title = "Operating system for mobile phones",
+          file = "phone_os")
   
   #OS, tablets
   tablet_breakdown <- analysis[,c(1,17:20)]
   tablet_absolute <- rowSums(tablet_breakdown[,2:5])
-  tablet_breakdown[,2] <- (tablet_breakdown[,2]/tablet_absolute)
-  tablet_breakdown[,3] <- (tablet_breakdown[,3]/tablet_absolute)
-  tablet_breakdown[,4] <- (tablet_breakdown[,4]/tablet_absolute)
-  tablet_breakdown[,5] <- (tablet_breakdown[,5]/tablet_absolute)
+  tablet_breakdown[,2:5] <- (tablet_breakdown[,2:5]/tablet_absolute)
   
   grapher(data = tablet_breakdown,
-          title = "Operating system for tablets (percentage)",
-          file = "tablet_os",
-          is.percent = TRUE)
+          title = "Operating system for tablets",
+          file = "tablet_os")
   
   #Return invisibly
   return(invisible())
