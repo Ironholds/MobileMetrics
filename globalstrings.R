@@ -54,7 +54,7 @@ content_sources <- c("(/\\?title=|/wiki\\?curid=|/sr-ec/|/w/|/wiki/|/zh/|/zh-tw/
 mobile_web <- c("(\\.m\\.mediawiki|((commons|meta|species)\\.m\\.wikimedia)|\\.m\\.(wik(tionary|isource|ibooks|ivoyage|iversity|iquote|inews|ipedia|idata)))")
 
 #Indicates particular mobile apps
-mobile_apps <- c("(WikipediaMobile|iWiki|WikiEgg|Quickipedia(?!( bot))|Wikipanion|WiktionaryMobile|^Articles|Wikiweb|WikipediaApp|Wikiamo|WikiLinks)")
+mobile_apps <- c("(WikipediaMobile|iWiki|WikiEgg|Quickipedia(?!( bot))|Wikipanion|WiktionaryMobile|^Articles|Wikiweb|WikipediaApp|Wikiamo|WikiLinks|WikiNodes|WikiBuddy|WikiView)")
 
 #Undesirable API requests
 undesired_APIs <- c("(action=(feedrecentchanges|opensearch|ajax|compare)|prop=(pageimage|imageinfo&)|&sections=0|list=(allpages|recentchanges|categorymembers|search)|api\\.php$)")
