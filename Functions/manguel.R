@@ -31,9 +31,6 @@ manguel <- function(x){
                 `Other hits, tablets` = length(UA[method == "non-app" & (os %in% tablet_os | device %in% tablet_devices) & !os %in% c("Android","iOS","Other")]) * 1000,
                 `Unidentifiable hits, tablets` = length(UA[method == "non-app" & (os %in% tablet_os | device %in% tablet_devices) & os == "Other"]) * 1000)
   
-  #Save analysis
-  save(analysis, file = file.path(getwd(),"Output","output.RData"))
-  
   #Pass into grapher, chunk by chunk
   #PV data
   pv_breakdown <- analysis[,1:4]
