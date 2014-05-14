@@ -9,7 +9,7 @@ MIME_tests <- function(){
   dispose <- system("hive -S -f ./Tests/HQL/mobile_mime.hql > ./Tests/Input/mobile_mime.tsv")
   
   #Read it in
-  data <- lapply(c("desktop.mime.tsv","mobile_mime.tsv"),{
+  data <- lapply(c("desktop_mime.tsv","mobile_mime.tsv"),{
     
     #Read
     part_data <- read.delim(file.path(getwd(),"Tests","Input",x), as.is = TRUE, header = TRUE)
@@ -18,6 +18,7 @@ MIME_tests <- function(){
     if(grepl(x = x, pattern = "mobile")){
       
       part_data$type <- "mobile"
+      
     } else {
       
       part_data$type <- "desktop"
