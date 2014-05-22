@@ -71,10 +71,14 @@ mobile_devices <- c("iPhone","GT-I9300","GT-I9100","Generic Feature Phone","GT-I
                     "XT1032","DROID RAZR","BlackBerry 9320","Lumia 920", "GT-N7000",
                     "GT-S7562","XT907","SGH-T999","GT-I9305","BlackBerry 8520","SAMSUNG SCH-I545",
                     "SAMSUNG GT-I9500","SM-N9005","GT-I9105P","BlackBerry Touch","SC-06D","C5303",
-                    "SC-04E","SAMSUNG SM-N9005","Lumia 800","SGH-I747M","SonySO-02E")
+                    "SC-04E","SAMSUNG SM-N9005","Lumia 800","SGH-I747M","SonySO-02E","GT-I9082",
+                    "HTC Desire","GT-I9070","HTC One X","C2105","LG-D802","SGH-M919","HUAWEI Y300-0100",
+                    "GT-I8262","SAMSUNG GT-I9195","GT-S5830","XT1080","Lumia 625","HTC One S","XT1033",
+                    "GT-N7105","SGH-I337M","Lumia 620","SPH-L720","Generic Smartphone")
 
 tablet_devices <- c("iPad","Nexus 7","Kindle Fire HD 7\" WiFi", "Kindle Fire HD", "Kindle Fire HDX 7\" WiFi",
-                    "GT-P5110","GT-P3100","Kindle Fire","GT-N8000","GT-P5100")
+                    "GT-P5110","GT-P3100","Kindle Fire","GT-N8000","GT-P5100","GT-P5210","e-tab4","sec_smdkv210",
+                    "SM-T210","SM-T310","GT-N5100","Kindle")
 
 mobile_os <- c("Firefox OS","Windows Phone","Windows Mobile")
 
